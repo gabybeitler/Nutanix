@@ -3,14 +3,14 @@
 import requests
 import json
 
-username =
-password =
+username = "admin"
+password = PASSWORD
 payload = '{"kind":"vm"}'
 headers = {"content-type": "application/json"}
 
 requests.packages.urllib3.disable_warnings()
 
-response = requests.post('https://10.21.38.37:9440/api/nutanix/v3/vms/list',
+response = requests.post('https://aaa.bbb.ccc.ddd:9440/api/nutanix/v3/vms/list',
     verify = False,
     auth = (username, password),
     data = payload,
@@ -25,10 +25,11 @@ vm = [item for item in output["entities"]
 
 x = 0
 
-print('{0:15} : {1:20}'.format('Virtual Machine', 'UUID'))
-print('-'*55)
+print('{0:15} : {1:36} : {2:17}'.format('Virtual Machine', 'UUID', 'MAC'))
+print('-'*74)
 
 while x < nvm:
-    print('{0:15} : {1:20}'.format(vm[x]["spec"]["name"],
-        vm[x]["metadata"]["uuid"]))
+    print('{0:15} : {1:36} : {2:17}'.format(vm[x]["spec"]["name"],
+        vm[x]["metadata"]["uuid"],
+	vm[x]["spec"]["resources"]["nic_list"][0]["mac_address"]))
     x = x+1

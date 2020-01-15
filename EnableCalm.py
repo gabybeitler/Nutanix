@@ -4,7 +4,7 @@ import requests as r
 import json as j
 import getpass
 
-PE = input("Prism Element: ")
+PE = input("Prism Element IP: ")
 username = input("Username: ")
 password = getpass.getpass(prompt="Password: ")
 headers = {"content-type": "application/json"}

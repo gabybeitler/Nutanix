@@ -28,8 +28,8 @@ while x < nvm:
     if output["entities"][x]["name"] == "RXAutomationPC":
         pc_uuid = output["entities"][x]["uuid"]
         pc_json = j.loads(r.get('https://' + PE + '\
-        :9440/PrismGateway/services/rest/v2.0/vms/' + pc_uuid + '\
-        ?include_vm_nic_config=true',
+:9440/PrismGateway/services/rest/v2.0/vms/' + pc_uuid + '\
+?include_vm_nic_config=true',
             verify = False,
             auth = (username, password),
             headers = headers).text)
